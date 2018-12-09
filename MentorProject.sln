@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentorProject.WebUI", "Ment
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentorProject.UnitTests", "MentorProject.UnitTests\MentorProject.UnitTests.csproj", "{D18160AA-7849-478B-88E1-8718E5486182}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MentorProject.Classes", "MentorProject.Classes\MentorProject.Classes.csproj", "{8559F5DB-FAD9-4367-A282-F968BDF2914C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{D18160AA-7849-478B-88E1-8718E5486182}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D18160AA-7849-478B-88E1-8718E5486182}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D18160AA-7849-478B-88E1-8718E5486182}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8559F5DB-FAD9-4367-A282-F968BDF2914C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8559F5DB-FAD9-4367-A282-F968BDF2914C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8559F5DB-FAD9-4367-A282-F968BDF2914C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8559F5DB-FAD9-4367-A282-F968BDF2914C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web;
+using System.Web.Mvc;
 using MentorProject.WebUI.Infrastructure.Abstract;
 using MentorProject.WebUI.Models;
+using SportsStore.WebUI.Infrastructure.Filters;
 
 namespace MentorProject.WebUI.Controllers {
 
@@ -29,5 +32,26 @@ namespace MentorProject.WebUI.Controllers {
                 return View();
             }
         }
-    }
+
+		public ActionResult Home()
+		{
+			return Content( "Home Page" );
+		}
+
+		public ActionResult Logout()
+		{
+			foreach( HttpCookie cookie in Request.Cookies )
+			{
+				Response.Cookies.Set( new HttpCookie( cookie.Name, null ) { Expires = DateTime.Now.AddDays( -7 ) } );
+			}
+
+			return RedirectToAction( "Home" );
+		}
+
+		[AuthActionFilter]
+		public ActionResult Role1Page()
+		{
+			return Content( "Role1 Page" );
+		}
+	}
 }

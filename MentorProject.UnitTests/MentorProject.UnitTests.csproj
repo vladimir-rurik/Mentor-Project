@@ -104,6 +104,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MentorProject.Classes\MentorProject.Classes.csproj">
+      <Project>{8559f5db-fad9-4367-a282-f968bdf2914c}</Project>
+      <Name>MentorProject.Classes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MentorProject.WebUI\MentorProject.WebUI.csproj">
       <Project>{5620a400-2811-4719-bfc5-49e884967027}</Project>
       <Name>MentorProject.WebUI</Name>

@@ -139,7 +139,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
+    <Compile Include="Infrastructure\Abstract\ISessionManager.cs" />
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
+    <Compile Include="Infrastructure\Filters\AuthActionFilterAttribute.cs" />
+    <Compile Include="Infrastructure\Helpers\HttpSessionManager.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -160,6 +163,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MentorProject.Classes\MentorProject.Classes.csproj">
+      <Project>{8559f5db-fad9-4367-a282-f968bdf2914c}</Project>
+      <Name>MentorProject.Classes</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
