@@ -10,7 +10,16 @@ namespace MentorProject.WebUI.Controllers {
     public class AccountController : Controller {
         IAuthProvider authProvider;
 
-        public AccountController(IAuthProvider auth) {
+		//TODO: Install package to inject dependencies in the controller
+		private ICookieSetup _cookieSetup;
+		private IAuthorizationManager _authManager;
+		public AccountController( IAuthorizationManager _authManager, ICookieSetup _cookieSetup )
+		{
+			this._authManager = _authManager;
+			this._cookieSetup = _cookieSetup;
+		}
+
+		public AccountController(IAuthProvider auth) {
             authProvider = auth;
         }
 
@@ -21,8 +30,8 @@ namespace MentorProject.WebUI.Controllers {
         [HttpPost]
         public ActionResult Login(LoginViewModel model, string returnUrl) {
 
-            if (ModelState.IsValid) {
-                if (authProvider.Authenticate(model.UserName, model.Password)) {
+			if (ModelState.IsValid) {
+                if (_authManager.Login(model.UserName, model.Password)) {
                     return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
                 } else {
                     ModelState.AddModelError("", "Incorrect username or password");

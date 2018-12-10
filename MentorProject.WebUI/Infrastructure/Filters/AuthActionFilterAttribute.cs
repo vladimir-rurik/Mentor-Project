@@ -21,7 +21,7 @@ namespace SportsStore.WebUI.Infrastructure.Filters
 
 		public override void OnActionExecuting( ActionExecutingContext filterContext )
 		{
-			bool isAuthorized = (bool?)filterContext.HttpContext.Session[Types.SessionFields.is_authorized.ToString()] ?? false;
+			bool isAuthorized = (bool?)filterContext.HttpContext.Session[Types.SessionFields.LoggedInUser.ToString()] ?? false;
 
 			if( !isAuthorized )
 			{

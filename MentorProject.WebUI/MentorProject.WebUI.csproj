@@ -138,12 +138,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\Abstract\IAuthorizationManager.cs" />
     <Compile Include="Infrastructure\Abstract\IAuthProvider.cs" />
+    <Compile Include="Infrastructure\Abstract\ICookieSetup.cs" />
     <Compile Include="Infrastructure\Abstract\ISessionManager.cs" />
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\Filters\AuthActionFilterAttribute.cs" />
-    <Compile Include="Infrastructure\Helpers\HttpSessionManager.cs" />
+    <Compile Include="Infrastructure\Helpers\AuthorizationManager.cs" />
+    <Compile Include="Infrastructure\Helpers\CookieSetup.cs" />
+    <Compile Include="Infrastructure\Helpers\SessionManager.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\Authorization\CustomPrincipal.cs" />
+    <Compile Include="Models\Authorization\CustomPrincipalSerializeModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

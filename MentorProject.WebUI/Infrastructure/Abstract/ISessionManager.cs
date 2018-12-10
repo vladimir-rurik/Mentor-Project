@@ -1,13 +1,17 @@
-﻿using System;
+﻿using MentorProject.WebUI.Models.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace SportsStore.WebUI.Infrastructure.Abstract
+namespace MentorProject.WebUI.Infrastructure.Abstract
 {
-	interface ISessionManager
-	{
-		bool IsAuthorized { get; set;}
-	}
+    public interface ISessionManager
+    {
+        CustomPrincipalSerializeModel CurrentUser { get; set; }
+        bool IsLoggedIn();
+        void SetLoggedInSession(CustomPrincipalSerializeModel lvm);
+        void ClearSession();
+
+    }
 }

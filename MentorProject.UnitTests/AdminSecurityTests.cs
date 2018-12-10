@@ -12,9 +12,9 @@ namespace MentorProject.UnitTests {
         [TestMethod]
         public void Can_Login_With_Valid_Credentials() {
 
-            // Arrange - create a mock authentication provider
-            Mock<IAuthProvider> mock = new Mock<IAuthProvider>();
-            mock.Setup(m => m.Authenticate("admin", "secret")).Returns(true);
+            // Arrange - create a mock Authorization provider
+            Mock<IAuthorizationManager> mockAuth = new Mock<IAuthorizationManager>();
+            mockAuth.Setup(m => m.Login("admin", "secret")).Returns(true);
 
             // Arrange - create the view model
             LoginViewModel model = new LoginViewModel {
@@ -22,8 +22,9 @@ namespace MentorProject.UnitTests {
                 Password = "secret"
             };
 
-            // Arrange - create the controller
-            AccountController target = new AccountController(mock.Object);
+			// Arrange - create the controller
+			Mock<ICookieSetup> mockCookie = new Mock<ICookieSetup>();
+            AccountController target = new AccountController(mockAuth.Object, mockCookie.Object);
 
             // Act - authenticate using valid credentials
             ActionResult result = target.Login(model, "/MyURL");
@@ -36,9 +37,9 @@ namespace MentorProject.UnitTests {
         [TestMethod]
         public void Cannot_Login_With_Invalid_Credentials() {
 
-            // Arrange - create a mock authentication provider
-            Mock<IAuthProvider> mock = new Mock<IAuthProvider>();
-            mock.Setup(m => m.Authenticate("badUser", "badPass")).Returns(false);
+            // Arrange - create a mock Authorization provider
+            Mock<IAuthorizationManager> mockAuth = new Mock<IAuthorizationManager>();
+            mockAuth.Setup(m => m.Login("badUser", "badPass")).Returns(false);
 
             // Arrange - create the view model
             LoginViewModel model = new LoginViewModel {
@@ -46,11 +47,12 @@ namespace MentorProject.UnitTests {
                 Password = "badPass"
             };
 
-            // Arrange - create the controller
-            AccountController target = new AccountController(mock.Object);
+			// Arrange - create the controller
+			Mock<ICookieSetup> mockCookie = new Mock<ICookieSetup>();
+			AccountController target = new AccountController( mockAuth.Object, mockCookie.Object );
 
-            // Act - authenticate using valid credentials
-            ActionResult result = target.Login(model, "/MyURL");
+			// Act - authenticate using valid credentials
+			ActionResult result = target.Login(model, "/MyURL");
 
             // Assert
             Assert.IsInstanceOfType(result, typeof(ViewResult));

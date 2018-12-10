@@ -6,6 +6,7 @@ using Moq;
 using Ninject;
 using MentorProject.WebUI.Infrastructure.Abstract;
 using MentorProject.WebUI.Infrastructure.Concrete;
+using MentorProject.WebUI.Infrastructure.Helpers;
 
 namespace MentorProject.WebUI.Infrastructure {
 
@@ -28,6 +29,10 @@ namespace MentorProject.WebUI.Infrastructure {
         private void AddBindings() {
 
             kernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
-        }
-    }
+			kernel.Bind<IAuthorizationManager>().To<AuthorizationManager>();
+			kernel.Bind<ICookieSetup>().To<CookieSetup>();
+			kernel.Bind<ISessionManager>().To<SessionManager>();
+
+		}
+	}
 }

@@ -10,7 +10,8 @@ namespace MentorProject.Classes
     {
 		public enum SessionFields
 		{
-			is_authorized
+			IsAuthorized,
+			LoggedInUser
 		}
     }
 }
