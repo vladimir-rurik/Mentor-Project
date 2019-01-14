@@ -32,7 +32,7 @@ namespace MentorProject.WebUI.Controllers {
 
 			if (ModelState.IsValid) {
                 if (_authManager.Login(model.UserName, model.Password)) {
-                    return Redirect(returnUrl ?? Url.Action("Index", "Admin"));
+                    return Redirect(returnUrl ?? Url.Action("AuthorizedPage"));
                 } else {
                     ModelState.AddModelError("", "Incorrect username or password");
                     return View();
@@ -47,6 +47,11 @@ namespace MentorProject.WebUI.Controllers {
 			return Content( "Home Page" );
 		}
 
+		public ActionResult AuthorizedPage()
+		{
+			return Content( "Authorized Page" );
+		}
+
 		public ActionResult Logout()
 		{
 			foreach( HttpCookie cookie in Request.Cookies )
@@ -57,7 +62,7 @@ namespace MentorProject.WebUI.Controllers {
 			return RedirectToAction( "Home" );
 		}
 
-		[AuthActionFilter]
+		[AuthActionFilter("Role1,RoleAdmin")]
 		public ActionResult Role1Page()
 		{
 			return Content( "Role1 Page" );

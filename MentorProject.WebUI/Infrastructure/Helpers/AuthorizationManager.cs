@@ -17,7 +17,15 @@ namespace MentorProject.WebUI.Infrastructure.Helpers
             _sessionManager = sessionManager;
         }
 
-        public bool Login(string username, string password)
+		public bool IsAuthorized
+		{
+			get
+			{
+				return _sessionManager.IsLoggedIn();
+			}
+		}
+
+		public bool Login(string username, string password)
         {
 			if( username == "admin" && password == "secret" )
 			{
